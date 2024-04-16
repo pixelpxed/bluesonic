@@ -1,0 +1,24 @@
+.settings-section-wrapper {
+    margin: 0.5rem 0;
+}
+
+.settings-section-title {
+    margin-bottom: 0.5rem;
+}
+
+.settings-option-label {
+    display: flex;
+
+    gap: 0.5rem;
+
+    padding: 0.25rem 0;
+
+    align-items: center;
+}
+
+.setting-icons-buttons-wrapper {
+    width: max-content;
+    max-width: calc(100% - 2em);
+
+    margin: 0 auto;
+}

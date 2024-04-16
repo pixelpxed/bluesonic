@@ -1,0 +1,50 @@
+
+.navigation-bar {
+    display: flex;
+
+    gap: 0;
+
+    position: relative;
+
+    justify-content: space-between;
+
+    padding: 0.5rem;
+
+    background: var(--color-accent);
+    border-bottom: 1px solid var(--color-main-transparent-light);
+
+    z-index: 99;
+
+    transition: 0.2s background-color, 0.2s color, 0.2s border;
+
+    overflow: auto;
+}
+
+.navigation-bar-fixed {
+    position: sticky;
+
+    top: 0;
+}
+
+.navigation-bar div {
+    display: flex;
+    
+    gap: 0;
+}
+
+.navigation-bar a,
+.navigation-bar p {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.25em;
+
+    width: max-content;
+    height: 100%;
+
+    padding: 0.5rem;
+
+    color: var(--color-white);
+}

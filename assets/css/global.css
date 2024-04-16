@@ -1,0 +1,444 @@
+
+@import url("/assets/css/components/fonts.css");
+@import url("/assets/css/components/navbar.css");
+@import url("/assets/css/components/contextbox.css");
+@import url("/assets/css/components/settings.css");
+@import url("/assets/css/components/popup.css");
+@import url("/assets/css/components/notification.css");
+@import url("/assets/css/components/iconbutton.css");
+
+:root,
+:root.sync-os,
+:root[theme="sync-os"] {
+    --font-family: 'Line Seed', sans-serif;
+
+    --color-black: #000000;
+    --color-white: #ffffff;
+
+    --font-weight-normal: 400;
+    --font-weight-semibold: 500;
+    --font-weight-bold: 700;
+
+    --color-main-transparent: rgba(0, 0, 0, 0.5);
+    --color-alt-transparent: rgba(255, 255, 255, 0.5);
+    --color-main-transparent-light: rgba(0, 0, 0, 0.2);
+    --color-alt-transparent-light: rgba(255, 255, 255, 0.2);
+
+    --color-days: rgba(0, 0, 0, 0.8);
+
+    --color-accent: rgb(44, 69, 123);
+}
+
+:root,
+:root.dark,
+:root[theme="dark"] {
+    --background-html: rgb(0, 0, 0) no-repeat center center fixed;
+    --background-body: transparent no-repeat center center fixed;
+
+    --color-main-text: rgb(255, 255, 255);
+    --color-alt-text: rgb(0, 0, 0);
+
+    --color-red: rgb(255, 69, 58);
+    --color-orange: rgb(255, 159, 10);
+    --color-yellow: rgb(255, 214, 10);
+    --color-green: rgb(48, 209, 88);
+    --color-mint: rgb(102, 212, 207);
+    --color-teal: rgb(64, 200, 224);
+    --color-cyan: rgb(100, 210, 255);
+    --color-blue: rgb(10, 132, 255);
+    --color-indigo: rgb(94, 92, 230);
+    --color-purple: rgb(191, 90, 242);
+    --color-pink: rgb(255, 55, 95);
+    --color-brown: rgb(172, 142, 104);
+
+    --color-gray-1: rgb(142, 142, 147);
+    --color-gray-2: rgb(99, 99, 102);
+    --color-gray-3: rgb(72, 72, 74);
+    --color-gray-4: rgb(58, 58, 60);
+    --color-gray-5: rgb(44, 44, 46);
+    --color-gray-6: rgb(28, 28, 30);
+
+    --color-selection: rgba(10, 132 , 255, 0.4);
+
+    --icon-url-select: url("/assets/img/symbols/dark/keyboard_arrow_down.svg");
+    --icon-url-input-date: url("/assets/img/symbols/dark/calendar_month.svg");
+
+    color-scheme: dark;
+}
+
+:root.light,
+:root[theme="light"] {
+    --background-html: rgb(255, 255, 255) no-repeat center center fixed;
+    --background-body: transparent no-repeat center center fixed;
+
+    --color-main-text: rgb(0, 0, 0);
+    --color-alt-text: rgb(255, 255, 255);
+
+    --color-red: rgb(255, 59, 48);
+    --color-orange: rgb(255, 149, 0);
+    --color-yellow: rgb(255, 204, 0);
+    --color-green: rgb(52, 199, 89);
+    --color-mint: rgb(0, 199, 190);
+    --color-teal: rgb(48, 176, 199);
+    --color-cyan: rgb(50, 173, 230);
+    --color-blue: rgb(0, 122, 255);
+    --color-indigo: rgb(88, 86, 214);
+    --color-purple: rgb(175, 82, 222);
+    --color-pink: rgb(255, 45, 85);
+    --color-brown: rgb(162, 132, 94);
+
+    --color-gray-1: rgb(142, 142, 147);
+    --color-gray-2: rgb(174, 174, 178);
+    --color-gray-3: rgb(199, 199, 204);
+    --color-gray-4: rgb(209, 209, 214);
+    --color-gray-5: rgb(229, 229, 234);
+    --color-gray-6: rgb(242, 242, 247);
+
+    --color-selection: rgba(0, 122, 255, 0.4);
+
+    --icon-url-select: url("/assets/img/symbols/light/keyboard_arrow_down.svg");
+    --icon-url-input-date: url("/assets/img/symbols/light/calendar_month.svg");
+
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+    :root,
+    :root.sync-os,
+    :root[theme="sync-os"] {
+        --background-html: rgb(255, 255, 255) no-repeat center center fixed;
+        --background-body: transparent no-repeat center center fixed;
+
+        --color-main-text: rgb(0, 0, 0);
+        --color-alt-text: rgb(255, 255, 255);
+
+        --color-red: rgb(255, 59, 48);
+        --color-orange: rgb(255, 149, 0);
+        --color-yellow: rgb(255, 204, 0);
+        --color-green: rgb(52, 199, 89);
+        --color-mint: rgb(0, 199, 190);
+        --color-teal: rgb(48, 176, 199);
+        --color-cyan: rgb(50, 173, 230);
+        --color-blue: rgb(0, 122, 255);
+        --color-indigo: rgb(88, 86, 214);
+        --color-purple: rgb(175, 82, 222);
+        --color-pink: rgb(255, 45, 85);
+        --color-brown: rgb(162, 132, 94);
+
+        --color-gray-1: rgb(142, 142, 147);
+        --color-gray-2: rgb(174, 174, 178);
+        --color-gray-3: rgb(199, 199, 204);
+        --color-gray-4: rgb(209, 209, 214);
+        --color-gray-5: rgb(229, 229, 234);
+        --color-gray-6: rgb(242, 242, 247);
+
+        --color-selection: rgba(0, 122, 255, 0.4);
+
+        --icon-url-select: url("/assets/img/symbols/light/keyboard_arrow_down.svg");
+        --icon-url-input-date: url("/assets/img/symbols/light/calendar_month.svg");
+
+        color-scheme: light;
+    }
+}
+
+::selection {
+    background: var(--color-selection);
+}
+
+* {
+    box-sizing: border-box;
+
+    padding: 0;
+    margin: 0;
+
+    font-family: var(--font-family);
+
+    -webkit-appearance: none;
+
+    overflow-wrap: anywhere;
+}
+
+html {
+    background: var(--background-html);
+    background-size: cover;
+
+    transition: 0.2s background-color;
+}
+
+body {
+    font-weight: var(--font-weight-normal);
+
+    color: var(--color-main-text);
+    background: var(--background-body);
+    background-size: cover;
+
+    transition: 0.2s background-color;
+
+    -webkit-text-size-adjust: 100%;
+}
+
+hr {
+    margin: 1rem 0;
+
+    border: none;
+    border-top: 1px solid var(--color-gray-4);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b {
+    font-weight: var(--font-weight-bold);
+}
+
+a {
+    text-decoration: none;
+
+    color: var(--color-accent);
+
+    cursor: pointer;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="button"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    display: inline-block;
+
+    width: 100%;
+    height: max-content !important;
+
+    padding: 0.25rem;
+    margin: 0.5em auto;
+
+    background: transparent;
+
+    border: 1px solid var(--color-gray-4);
+    outline: none;
+
+    border-radius: 0.3em;
+
+    font-size: 1rem;
+    font-weight: var(--font-weight-normal);
+
+    transition: 0.2s background-color, 0.2s border, 0.2s opacity;
+}
+
+input[type="text"]:hover,
+input[type="url"]:hover,
+input[type="button"]:hover,
+input[type="number"]:hover,
+input[type="date"]:hover,
+select:hover,
+textarea:hover {
+    border: 1px solid var(--color-gray-1);
+}
+
+select {
+    background: var(--icon-url-select) no-repeat 100% center;
+    background-size: 1rem;
+}
+
+input[type="date"] {
+    background: var(--icon-url-date) no-repeat 100% center;
+    background-size: 1rem;
+}
+
+input[type="date"].height-important {
+    height: 30px !important;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    appearance: auto;
+
+    min-width: 1rem;
+    min-height: 1rem;
+
+    margin: 0.5em;
+}
+
+input[type="color"] {
+    width: 1.5rem;
+    height: 1.5rem;
+    
+    background: transparent;
+
+    border: 1px solid var(--color-gray-4);
+
+    border-radius: 0.75rem;
+
+    overflow: hidden;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+}
+
+button {
+    width: 100%;
+
+    padding: 0.25em 0.5em;
+
+    font-size: 1rem;
+    font-weight: var(--font-weight-normal);
+
+    color: var(--color-white);
+    background: var(--color-accent);
+
+    border-radius: 0.3em;
+
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    transition: 0.2s background-color, 0.1s transform, 0.2s filter;
+}
+
+button:hover {
+    filter: brightness(0.9);
+}
+
+button:active {
+    transform: scale(0.95);
+    filter: brightness(0.9);
+}
+
+option {
+    background: var(--color-gray-6);
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 20;
+    user-select: none;
+}
+
+.body-disable-scrollbar {
+    height: 100%;
+    overflow: hidden;
+}
+
+footer,
+.footer-wrapper {
+    padding: 1em;
+
+    font-size: 0.8em;
+    text-align: center;
+
+    color: var(--color-gray-2);
+}
+
+ul, ol {
+    margin-left: 1.5em;
+}   
+
+table {
+    border-collapse: collapse;
+
+    outline: 1px solid var(--color-gray-4);
+    border-radius: 0.3rem;
+    overflow: hidden;
+}
+
+th {
+    text-align: left;
+
+    background: var(--color-gray-5);
+}
+
+th, td {
+    padding: 0.5rem;
+
+    border-right: 1px solid var(--color-gray-4);
+}
+
+th:last-child,
+td:last-child {
+    border-right: none;
+}
+
+thead th {
+    border-bottom: 1px solid var(--color-gray-4);
+}
+
+tbody tr {
+    border-bottom: 1px dashed var(--color-gray-4);
+}
+
+tbody tr:last-child {
+    border: none;
+}
+
+kbd {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 22px;
+    min-height: 22px;
+    
+    margin: 0 0.125rem;
+    padding: 0.125rem 0.25rem;
+
+    font-size: 0.75rem;
+
+    background: var(--color-gray-4);
+    border: 1px solid var(--color-gray-2);
+
+    text-align: center;
+
+    border-radius: 0.2rem;
+}
+
+kbd .material-symbols-outlined {
+    font-size: 1rem;
+}
+
+.kbd-wrapper {
+    display: flex;
+    align-items: center;
+    
+    text-align: center;
+}
+
+.main {
+    position: relative;
+}
+
+.full-page-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    backdrop-filter: blur(0.2em);
+    -webkit-backdrop-filter: blur(0.2em);
+
+    z-index: 100;
+}

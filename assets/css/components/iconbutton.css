@@ -1,0 +1,45 @@
+.icon-button {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 8px;
+
+    font-size: 16px !important;
+
+    color: var(--color-main-text);
+    background: var(--color-gray-6);
+
+    border: 1px solid var(--color-gray-4);
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    user-select: none;
+
+    transition: 0.2s background-color, 0.3s border;
+}
+
+.icon-button:hover {
+    border: 1px solid var(--color-gray-1);
+}
+
+.icon-button-inline {
+    display: inline-flex !important;
+
+    margin: 0.25em;
+}
+
+.icon-button-danger {
+    color: var(--color-white) !important;
+    background: var(--color-red);
+
+    border: 1px solid var(--color-alt-transparent);
+
+    transition: 0.5s;
+}
