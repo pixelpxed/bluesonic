@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        font-family: 'Line Seed Sans TH', sans-serif;
+
+        @apply transition-colors
+    }
+
+    body {
+        height: 500vh;
+
+        @apply bg-black text-white
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply text-sky-300 my-2
+    }
+
+    button, button[type="fill"] {
+        @apply bg-sky-500 px-4 py-2 my-8 mr-2 rounded-full hover:bg-sky-700
+    }
+
+    button[type="outline"] {
+        @apply bg-transparent border border-sky-500 hover:border-sky-700
+    }
+}
