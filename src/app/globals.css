@@ -4,7 +4,7 @@
 
 @layer base {
     * {
-        font-family: 'Line Seed Sans TH', sans-serif;
+        font-family: 'Line Seed', sans-serif;
 
         @apply transition-colors
     }
