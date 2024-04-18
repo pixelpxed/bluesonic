@@ -13,7 +13,7 @@ export default function NavBar() {
                 <section>
                     <Link href="/">Home</Link>
                     <Link href="/gallery">Gallery</Link>
-                    <Link href="">Contact</Link>
+                    <Link href="/contact">Contact</Link>
                 </section>
             </div>
         </nav>
