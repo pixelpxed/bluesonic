@@ -11,8 +11,8 @@ export default function NavBar() {
                     <p><b>bluesonic.</b></p>
                 </section>
                 <section>
-                    <Link href="">Home</Link>
-                    <Link href="">Gallery</Link>
+                    <Link href="/">Home</Link>
+                    <Link href="/gallery">Gallery</Link>
                     <Link href="">Contact</Link>
                 </section>
             </div>
