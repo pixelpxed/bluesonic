@@ -19,11 +19,11 @@
         @apply text-sky-300 my-2
     }
 
-    button, button[type="fill"] {
-        @apply bg-sky-500 px-4 py-2 my-8 mr-2 rounded-full hover:bg-sky-700
+    button, button[type="filled"] {
+        @apply bg-sky-500 px-4 py-2 mt-2 mr-2 rounded-full hover:bg-sky-700 last:mr-0
     }
 
-    button[type="outline"] {
+    button[type="outlined"] {
         @apply bg-transparent border border-sky-500 hover:border-sky-700
     }
 }
