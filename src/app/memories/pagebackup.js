@@ -9,12 +9,12 @@ export const metadata = {
 }
 
 export default async function Gallery() {
-  // const imageListRaw = await fs.readFile(
-  //   process.cwd() + '/public/assets/json/memoriesList.json', 'utf8'
-  // );
-  // const imageList = JSON.parse(imageListRaw)
-  const imageContext = require.context('../../../public/assets/img/memories', false, /\.(png|jpe?g|svg)$/);
-  const images = imageContext.keys().map(imageContext);
+  const imageListRaw = await fs.readFile(
+    process.cwd() + '/public/assets/json/memoriesList.json', 'utf8'
+  );
+  const imageList = JSON.parse(imageListRaw)
+
+  console.log(imageList);
 
   return (
     <>
@@ -33,13 +33,15 @@ export default async function Gallery() {
         ">
           {
             displayImages ? (
-              <>
-                {
-                  images.map((image, index) => (
-                      <img className="object-contain aspect-[4/3]" key={index} src={image.default.src} alt={`Image ${index}`} />
-                  ))
-                }
-              </>
+              imageList.map((data) => (
+                <div>
+                  <img 
+                    className="object-cover rounded-lg w-full" 
+                    src={"/assets/img/memories/" + data.url} 
+                  />
+                  <p className="mt-2">{data.desc}</p>
+                </div>
+              ))
             ) : (
               <div className="
                 col-span-1 bg-neutral-900 border border-neutral-800 
