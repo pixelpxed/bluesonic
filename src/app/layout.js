@@ -1,7 +1,7 @@
-import NavBar from "@/components/common/navbar";
+import NavBar from "@/components/common/navigationbar";
 
 import "/public/assets/css/global.css";
-import "/public/fonts/Line_Seed_Sans_TH/fonts.css"
+import "/public/assets/css/fonts.css"
 
 export const metadata = {
   title: "bluesonic.",
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         </head>
         <body>
           <NavBar />
-          <main className="max-w-5xl m-auto p-4">
+          <main className="max-w-5xl m-auto p-4 pt-0">
             {children}
           </main>
         </body>

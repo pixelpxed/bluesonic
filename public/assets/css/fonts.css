@@ -1,0 +1,61 @@
+/* Line Seed Sans TH */
+
+@font-face {
+    font-family: "Line Seed";
+    src: url("../../fonts/Line_Seed_Sans_TH/LINESeedSansTH_W_Th.woff");
+
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Line Seed";
+    src: url("../../fonts/Line_Seed_Sans_TH/LINESeedSansTH_W_Rg.woff");
+
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Line Seed";
+    src: url("../../fonts/Line_Seed_Sans_TH/LINESeedSansTH_W_Bd.woff");
+
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Line Seed";
+    src: url("../../fonts/Line_Seed_Sans_TH/LINESeedSansTH_W_XBd.woff");
+
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: "Line Seed";
+    src: url("../../fonts/Line_Seed_Sans_TH/LINESeedSansTH_W_He.woff");
+
+    font-weight: 900;
+}
+
+/* Material Symbols Outlined */
+
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 100 700;
+    src: url("../../fonts/Material_Symbols_Outlined/Material_Symbols_Outlined.woff2") format('woff2');
+  }
+
+.mso-icon {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
