@@ -1,11 +1,12 @@
-const displayImages = true
+const displayImages = false
 
-import { promises as fs } from 'fs';
-
+import Link from "next/link";
+import Image from "next/image";
 import PageStoryHeader from "@/components/common/pagestoryheader"
 
 export const metadata = {
-  title: "Memories"
+  title: "Memories",
+  desc: "รูปภาพ เป็นเครื่องมือในการเก็บความทรงจำที่มหัศจรรย์มากๆ ในทุกๆรูปภาพนั้น มีเรี่องราว อารมณ์ และทุกความรู้สึกซ่อนอยู่"
 }
 
 export default async function Gallery() {
@@ -15,6 +16,8 @@ export default async function Gallery() {
   // const imageList = JSON.parse(imageListRaw)
   const imageContext = require.context('../../../public/assets/img/memories', false, /\.(png|jpe?g|svg)$/);
   const images = imageContext.keys().map(imageContext);
+
+  const filters = ["เบื้องหลังความทรงจำ", "ท่องแดนสวน", ["ค่ายปฐมนิเทศ​วันที่ 1", "ค่ายปฐมนิเทศ​วันที่ 2", "ค่ายปฐมนิเทศ​วันที่ 3"]]
 
   return (
     <>
@@ -28,35 +31,47 @@ export default async function Gallery() {
             สามารถเซฟรูป และเอาไปใช้ตามที่น้องอยากได้ ได้เลยนะ พี่ไม่ติดอะไรครับ :)
           "
         />
-        <div className="
-          grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1
-        ">
-          {
-            displayImages ? (
-              <>
+        {/* <div>
+          <select name="" id="">
+            <option value="filter">เบื้องหลังความทรงจำ</option>
+            <option value="filter">ท่องแดนสวน</option>
+            <optgroup label="ค่ายปฐมนิเทศ​">
+              <option value="filter">วันที่ 1</option>
+              <option value="filter">วันที่ 2</option>
+              <option value="filter">วันที่ 3</option>
+            </optgroup>
+          </select>
+        </div> */}
+        {
+          displayImages ? (
+            <>
+              {/* <p>พี่ ๆ เตรียมค่าย</p> */}
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
                 {
                   images.map((image, index) => (
-                      <img className="object-contain aspect-[4/3]" key={index} src={image.default.src} alt={`Image ${index}`} />
+                    <Link href={"/memories/viewer/" + index}>
+                      <Image className="object-cover aspect-[4/3] rounded-lg border border-white border-opacity-25" width={480} height={360} key={index} src={image.default.src} alt={`Image ${index}`} />
+                    </Link>
                   ))
                 }
-              </>
-            ) : (
-              <div className="
-                col-span-1 bg-neutral-900 border border-neutral-800 
-                rounded-lg px-4 py-8 text-center lg:col-span-3 md:col-span-2 
-                sm:col-span-1
-              ">
-                <h1 className="!text-7xl mso-icon animate-bounce">
-                  gallery_thumbnail
-                </h1>
-                <p>
-                  กำลังประมวลผลภาพกิจกรรม ค่อยกลับมานะ<br />
-                  XX/XX/XXXX ณ XX:XX
-                </p>
               </div>
-            )
-          }
-        </div>
+            </>
+          ) : (
+            <div className="
+              col-span-1 bg-neutral-900 border border-neutral-800 
+              rounded-lg px-4 py-8 text-center lg:col-span-3 md:col-span-2 
+              sm:col-span-1
+            ">
+              <h1 className="!text-7xl mso-icon animate-bounce">
+                gallery_thumbnail
+              </h1>
+              <p>
+                กำลังประมวลผลภาพกิจกรรม ค่อยกลับมานะ<br />
+                XX/XX/XXXX ณ XX:XX
+              </p>
+            </div>
+          )
+        }
       </div>
     </>
   )

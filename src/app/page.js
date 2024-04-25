@@ -16,7 +16,7 @@ export default function Home() {
           desc="แฮร่! สวัสดีครับน้องๆ bluesonic ทุกคน ขอบคุณที่อย่างน้อยๆ ก็ได้เปิดมาอ่านนะ"
         />
         <div className="m-auto w-full">
-          <Link href="/gallery">
+          <Link href="/memories">
             <button appearance="filled">ดูรูปภาพความทรงจำกันเถอะ</button>
           </Link>
         </div>
