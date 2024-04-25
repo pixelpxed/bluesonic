@@ -1,4 +1,4 @@
-const displayImages = false
+const displayImages = true
 
 import Link from "next/link";
 import Image from "next/image";
@@ -9,15 +9,56 @@ export const metadata = {
   desc: "รูปภาพ เป็นเครื่องมือในการเก็บความทรงจำที่มหัศจรรย์มากๆ ในทุกๆรูปภาพนั้น มีเรี่องราว อารมณ์ และทุกความรู้สึกซ่อนอยู่"
 }
 
-export default async function Gallery() {
-  // const imageListRaw = await fs.readFile(
-  //   process.cwd() + '/public/assets/json/memoriesList.json', 'utf8'
-  // );
-  // const imageList = JSON.parse(imageListRaw)
-  const imageContext = require.context('../../../public/assets/img/memories', false, /\.(png|jpe?g|svg)$/);
-  const images = imageContext.keys().map(imageContext);
+const albums = ["precamp", "explore", "day1", "day2", "day3"]
 
-  const filters = ["เบื้องหลังความทรงจำ", "ท่องแดนสวน", ["ค่ายปฐมนิเทศ​วันที่ 1", "ค่ายปฐมนิเทศ​วันที่ 2", "ค่ายปฐมนิเทศ​วันที่ 3"]]
+export default async function Gallery() {
+  function getImages(title, index) {
+    const precamp = require.context(`../../../public/assets/img/memories/precamp`, false, /\.(png|jpe?g|svg)$/)
+    const explore = require.context(`../../../public/assets/img/memories/explore`, false, /\.(png|jpe?g|svg)$/)
+    const day1 = require.context(`../../../public/assets/img/memories/orientation-day1`, false, /\.(png|jpe?g|svg)$/)
+    const day2 = require.context(`../../../public/assets/img/memories/orientation-day2`, false, /\.(png|jpe?g|svg)$/)
+    const day3 = require.context(`../../../public/assets/img/memories/orientation-day3`, false, /\.(png|jpe?g|svg)$/)
+
+    const imageContext = [
+      {
+        collection: precamp,
+        title: "Behind the Scenes"
+      }, 
+      {
+        collection: explore,
+        title: "ท่องแดนสวน​ฯ"
+      }, 
+      {
+        collection: day1,
+        title: "ค่ายปฐมนิเทศ วันที่ 1"
+      }, 
+      {
+        collection: day2,
+        title: "ค่ายปฐมนิเทศ วันที่ 2"
+      }, 
+      {
+        collection: day3,
+        title: "ค่ายปฐมนิเทศ วันที่ 3"
+      }, 
+    ]
+
+    console.log(imageContext[index].collection);
+    const images = imageContext[index].collection.keys().map(imageContext[index].collection);
+
+    var imagesHtml = images.map((image, index) => (
+      <Image className="object-cover aspect-[4/3] rounded-lg border border-white border-opacity-25 w-full" width={480} height={360} key={index} src={image.default.src} alt={`Image ${index}`} />
+    ))
+
+    return (
+      <div className="my-16 flex flex-col gap-4">
+        <p className="font-bold">{imageContext[index].title}</p>
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+          {imagesHtml}
+        </div>
+      </div>
+    )
+  }
+
 
   return (
     <>
@@ -31,30 +72,14 @@ export default async function Gallery() {
             สามารถเซฟรูป และเอาไปใช้ตามที่น้องอยากได้ ได้เลยนะ พี่ไม่ติดอะไรครับ :)
           "
         />
-        {/* <div>
-          <select name="" id="">
-            <option value="filter">เบื้องหลังความทรงจำ</option>
-            <option value="filter">ท่องแดนสวน</option>
-            <optgroup label="ค่ายปฐมนิเทศ​">
-              <option value="filter">วันที่ 1</option>
-              <option value="filter">วันที่ 2</option>
-              <option value="filter">วันที่ 3</option>
-            </optgroup>
-          </select>
-        </div> */}
         {
           displayImages ? (
             <>
-              {/* <p>พี่ ๆ เตรียมค่าย</p> */}
-              <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-                {
-                  images.map((image, index) => (
-                    <Link href={"/memories/viewer/" + index}>
-                      <Image className="object-cover aspect-[4/3] rounded-lg border border-white border-opacity-25" width={480} height={360} key={index} src={image.default.src} alt={`Image ${index}`} />
-                    </Link>
-                  ))
-                }
-              </div>
+              {
+                albums.map((data, index) => (
+                  getImages(data, index)
+                ))
+              }
             </>
           ) : (
             <div className="
