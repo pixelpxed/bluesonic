@@ -121,7 +121,10 @@ export default async function Gallery() {
             //   sm:col-span-1
             // "
           >
-            <div className="m-auto w-full max-w-[32rem]">
+            <div className="
+              grid grid-cols-1 m-auto w-full max-w-[32rem] 
+              place-items-center gap-0 lg:grid-cols-2 lg:max-w-[64rem] lg:gap-4
+            ">
               <div className="flex flex-col gap-2">
                 <h1 className="text-2xl font-bold">#เม่นน้อยทะยานฟ้า</h1>
                 <p>
@@ -133,7 +136,12 @@ export default async function Gallery() {
                   และค่ายปฐมนิเทศมาฝาก อดใจรอนะ ไม่นานหรอก!
                 </p>
               </div>
-              <Image src="/assets/img/sonic-yippie.gif" width={720} height={720} className="w-full rounded-lg bg-blue-300 p-8 mx-auto my-8" />
+              <Image 
+                src="/assets/img/sonic-yippie.gif" 
+                width={720} 
+                height={720} 
+                className="w-full rounded-lg bg-blue-300 p-8 mx-auto my-8"
+              />
             </div>
           </div>
         )
