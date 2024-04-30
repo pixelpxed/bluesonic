@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
           <title>bluesonic.</title>
         </head>
         <body>
-          <NavBar />
+          {/* <NavBar /> */}
           <main className="max-w-5xl m-auto p-4 pt-0">
             {children}
           </main>

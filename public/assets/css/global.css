@@ -16,7 +16,7 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-        @apply text-blue-500 my-2
+        @apply text-blue-500
     }
 
     button, 
@@ -27,5 +27,9 @@
 
     button[appearance="outlined"] {
         @apply bg-transparent border border-blue-500 hover:border-blue-700
+    }
+
+    span {
+        @apply text-blue-300
     }
 }
