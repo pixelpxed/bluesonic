@@ -1,126 +1,110 @@
-const displayImages = false
+const displayImages = true
 
-// import Link from "next/link";
 import Image from "next/image";
+import Header from "@/components/CollectionHeader"
 import Link from "next/link";
-import PageStoryHeader from "@/components/common/pagestoryheader"
 
-export const metadata = {
-  title: "Memories",
-  desc: "รูปภาพ เป็นเครื่องมือในการเก็บความทรงจำที่มหัศจรรย์มากๆ ในทุกๆรูปภาพนั้น มีเรี่องราว อารมณ์ และทุกความรู้สึกซ่อนอยู่"
-}
-
-const albums = ["explore", "day1", "day2", "day3", "precamp"]
-
+// Collection Declairation
 const precamp = require.context(`../../public/assets/img/memories/precamp`,  false,  /\.(png|jpe?g|svg)/)
 const explore = require.context(`../../public/assets/img/memories/explore`,  false,  /\.(png|jpe?g|svg)/)
 const day1 = require.context(`../../public/assets/img/memories/orientation-day1`,  false,  /\.(png|jpe?g|svg)/)
 const day2 = require.context(`../../public/assets/img/memories/orientation-day2`,  false,  /\.(png|jpe?g|svg)/)
 const day3 = require.context(`../../public/assets/img/memories/orientation-day3`,  false,  /\.(png|jpe?g|svg)/)
 
-function Header(collection) {
-  if (collection == "explore") {
-    return (
-      <div>
-        <h1>ท่องแดนสวน​ฯ</h1>
-        <p>
-          วันแรกที่น้องได้เข้ามาค้นพบ ได้เรียนรู้สถานที่ในรั้วแห่งนี้ โดยมีพี่เลี้ยงสีตลอดทั้ง 6 สี
-          มารับน้องถึงหน้าโรงเรียน และพาน้องเดินมาอยู่กับเพื่อนมีสี ซึ่งสีของเราก็คือสีน้ำเงิน
-          <Link href='
-            https://www.instagram.com/explore/tags/เม่นน้อยทะยานฟ้า/
-          '>#เม่นน้อยทะบานฟ้า</Link>
+// Collection with String and Constant Types
+const albums = ["explore", "day1", "day2", "day3", "precamp"]
+const imageContext = [explore, day1, day2, day3, precamp]
+
+const teachersNames = ["จรรยานุช", "มานิกา", "ณัฐวุฒิ", "จรรยพร", "วงดาว", "ธนภรณ์", "กุนนฑี"]
+const newnormalNames = ["ภูมิใจ", "เฟย", "เต", "วอดก้า", "เชงเก้น", "คุณ", "ท็อป", "สตางค์", "ฌอน"]
+const leicesterNames = [
+  "ปัน", "ปอปอ", "เปรม", "ก้อง", "ต้นน้ำ", "ม่อน", "หลงเฟย", "อิคคิว", "ข้าวปั้น", 
+  "ปอร์โต้", "กิต", "สมาร์ท", "โมกข์", "กร", "กัปตัน", "กู๊ด", "ยูโร", "โตโน่", "อาร์ตี้", 
+  "เคิร์ฟ", "มิก", "กฤติ", "อะตอม", "ปีดี", "ไอน์สไตน์", "ต้นกล้า", "ว่านว่าน", "ปูนปั้น", "ปัน", 
+  "พีซ", "ปัญญ์", "นีโอ", "ปุญโญ", "กาย", "อาร์ท", "เกล้า", "ตีตี้", "อั๊ช", "ภูมิ", "อิคคิว", 
+  "มุนิ", "โบนัส", "ไดนอยด์", "ตุลย์", "เชน", "โชน", "เจแปน", "ปลื้ม", "พ็อฌ", "ไว", 
+  "อาฟา", "มัสแตง", "ฟีนิกซ์", "เปรม", "ดีเดย์", "เลโอ", "เจ", "เตเต้", "พญา", "ซันนี่", 
+  "อ๊อตโต้", "ฮิลล์", "วีซ่า", "โฟโต้", "กันต์", "เรือใบ", "ริวโอ", "ปุณ", "น้ำอุ่น", "อัยย์", 
+  "จูเนียร์", "อิค", "ดิน", "ปันน้ำ", "ภีม", "นที"
+]
+
+function getImages(title, index) {
+  const images = imageContext[index].keys().map(title);
+
+  var imagesHtml = images.map((image, index) => (
+    <Image 
+      className="
+        object-cover aspect-[4/3] border w-full h-full bg-neutral-900
+      "
+      width={480} height={360} key={index} 
+      src={image.default.src} alt={`${albums[index]} #${index}`}
+    />
+  ))
+  
+  return (
+    <div className="flex flex-col gap-4" id={albums[index]}>
+      <div className="
+        grid grid-cols-1 gap-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 
+        sm:grid-cols-1 [&>*]:rounded-lg [&>*]:border-neutral-700
+      ">
+        <div className="
+          bg-gradient-to-br from-blue-900 to-tranparent border 
+          px-4 py-8 row-span-2 relative overflow-auto 
           
-        </p>
+          xl:h-[calc((((((100vw-5rem)/4)/4)*3)*2)+1rem)]
+          lg:h-[calc((((((100vw-4rem)/3)/4)*3)*2)+1rem)]
+          md:h-[calc((((((100vw-3rem)/2)/4)*3)*2)+1rem)]
+          sm:h-max
+          h-max
+          
+        ">
+          <div className="flex flex-col gap-4">
+            {Header(albums[index], index)}
+          </div>
+          <div className="-z-10
+            absolute top-0 left-0 h-full w-full 
+            bg-[radial-gradient(white,transparent_1px)] 
+            [background-size:24px_24px] opacity-25
+          " />
+        </div>
+        {imagesHtml}
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default async function Gallery() {
-  function getImages(title, index) {
-
-    const imageContext = [
-      {
-        collection: explore,
-        title: "ท่องแดนสวน​ฯ",
-        desc: " ได้ไปรับทราบเรื่องเอกสารและใบต่างๆ /รู้เรื่องกฏระเบียบวินัยเบื้องต้น / ได้เล่นเกมเพื่อให้น้องได้ทวนความทรงจำอย่างสนุกสนาน / ตำนานการเชียร์และแปรอักษรของโรงเรียนสวนกุหลาบแห่งนี้ / เรียนรู้ศึกษาประวัติศาสตร์ของตึกยาวและการให้เราได้รักกัน / การเรียนรู้วิทยาศาสตร์นอกห้องเรียนผ่านศูนย์ Open Lab"
-      }, 
-      {
-        collection: day1,
-        title: "ค่ายปฐมนิเทศ วันที่ 1",
-        desc: ""
-      }, 
-      {
-        collection: day2,
-        title: "ค่ายปฐมนิเทศ วันที่ 2",
-        desc: ""
-      }, 
-      {
-        collection: day3,
-        title: "ค่ายปฐมนิเทศ วันที่ 3",
-        desc: ""
-      }, 
-      {
-        collection: precamp,
-        title: "Behind the Scenes",
-        desc: ""
-      } 
-    ]
-
-    const images = imageContext[index].collection.keys().map(
-      title
-    );
-
-    var imagesHtml = images.map((image, index) => (
-      <Image className="
-        object-cover aspect-[4/3] rounded-lg border border-white 
-        border-opacity-25 w-full" width={480} height={360} key={index} 
-        src={image.default.src} alt={`Image ${index}`}
-      />
-    ))
-    
-    return (
-      <div className="my-16 flex flex-col gap-4">
-        {Header(albums[index])}
-        <div className="
-          grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1
-        ">
-          {imagesHtml}
-        </div>
-      </div>
-    )
-  }
-
-
   return (
     <div>
-      {/* <PageStoryHeader 
-        title="ภาพความทรงจำ"
-        desc="
-          รูปภาพ เป็นเครื่องมือในการเก็บความทรงจำที่มหัศจรรย์มากๆ ในทุกๆรูปภาพนั้น มีเรี่องราว 
-          อารมณ์ และทุกความรู้สึกซ่อนอยู่ และพี่ๆเชื่อว่า น้องๆก็คงมีประสบการณ์ที่น้องจำ 
-          และอยากเห็นอีกนะ พี่ๆ ได้ถ่ายรูปมาตลอดกิจกรรมเลย ลองดูนะ ชอบรูปไหนไหม น้องๆ
-          สามารถเซฟรูป และเอาไปใช้ตามที่น้องอยากได้ ได้เลยนะ พี่ไม่ติดอะไรครับ :)
-        "
-      /> */}
       {
         displayImages ? (
-          <>
+          <div className="flex flex-col gap-8">
+            <div className="relative">
+              <Image 
+                src="/assets/img/memories/groupphoto-soccer.jpg" 
+                width={1920} 
+                height={1080} 
+                alt="รูปรวมสมาชิก #เม่นน้อยทะยานฟ้า" 
+                className="rounded-lg border border-neutral-700 aspect-[16/6] object-cover"
+              />
+              <h1 className="absolute right-2 top-2 sm:top-4 sm:right-4 text-sm font-bold">#เม่นน้อยทะยานฟ้า</h1>
+            </div>
             {
               albums.map((data, index) => (
-                getImages(explore, index)
+                // console.log(imageContext[index], index)
+                getImages(imageContext[index], index)
               ))
             }
-          </>
+            <p className="opacity-50 text-xs text-center">
+              ขอขอบคุณความหมายชื่อรุ่นจากเพจ <Link target="_blank" href="https://www.facebook.com/sktranslator">
+                <span>แปลภาษาเด็กสวนฯ</span>
+              </Link> และรูปภาพค่ายบางส่วนจากเพจ <Link target="_blank" href="https://www.facebook.com/SuanSkit">
+                <span>SK Innovation Gallery</span>
+              </Link>
+            </p>
+          </div>
         ) : (
-          <div 
-            className="flex h-screen"
-            // className="
-            //   col-span-1 bg-neutral-900 border border-neutral-800 
-            //   rounded-lg px-4 py-8 my-8 text-center lg:col-span-3 md:col-span-2 
-            //   sm:col-span-1
-            // "
-          >
+          <div className="flex h-screen">
             <div className="
               grid grid-cols-1 m-auto w-full max-w-[32rem] 
               place-items-center gap-0 lg:grid-cols-2 lg:max-w-[64rem] lg:gap-4

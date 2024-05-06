@@ -15,10 +15,6 @@
         @apply bg-black text-white
     }
 
-    h1, h2, h3, h4, h5, h6 {
-        @apply text-blue-500
-    }
-
     button, 
     button[appearance="filled"] {
         @apply bg-blue-500 px-4 py-2 mt-2 mr-2 rounded-full 
